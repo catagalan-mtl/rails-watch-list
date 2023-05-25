@@ -1,4 +1,9 @@
 <h1>List</h1>
 
 <h3><%= @list.name %></h3>
+<%# <p><%= @bookmarks.each do |bookmark| %>
+      <%# <%= link_to bookmark.movie, movie_path(bookmark)%>
+    <%# <% end %>
+<%# </p> %>
+<%= link_to "Add a new bookmark", new_list_bookmark_path(@list)%>
 <%= link_to "Back to all lists", lists_path %>
