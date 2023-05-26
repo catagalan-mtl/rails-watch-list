@@ -1,9 +1,15 @@
 <h1>List</h1>
 
 <h3><%= @list.name %></h3>
-<%# <p><%= @bookmarks.each do |bookmark| %>
-      <%# <%= link_to bookmark.movie, movie_path(bookmark)%>
-    <%# <% end %>
-<%# </p> %>
+<%# <% if @bookmark.nil? != true %>
+  <p><% Bookmark.where(list_id: @list).each do |bookmark| %>
+      <strong><%= Movie.find(bookmark.movie_id).title %></strong>
+      <%= bookmark.comment %>
+      <%= bookmark.id %>
+      <%= link_to "Delete bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+
+      <% end %>
+  </p>
+<%# <% end %>
 <%= link_to "Add a new bookmark", new_list_bookmark_path(@list)%>
 <%= link_to "Back to all lists", lists_path %>
